@@ -99,15 +99,11 @@ describe('server', () => {
         .expect('Content-Type', 'text/plain; charset=utf-8')
         .end((error, response) => {
           if (error) {
-            done(error);
-            return;
+            return done(error);
+            
           }
-          let result = JSON.parse(decrypt(response.text));
-          result.should.be.a('Array');
-          result.should.eql([{id:1, message: "This is a test message."}]);
-          done();
-           bcrypt.compare(
-            '{"id":1,"message":"This is a test message."}',
+         bcrypt.compare(
+            '[{"id":1,"message":"This is a test message."}]',
             response.text,
             (error, response) => {
               if (error) {
@@ -117,6 +113,7 @@ describe('server', () => {
               done();
             }
           );
+          
         });
     });
 
