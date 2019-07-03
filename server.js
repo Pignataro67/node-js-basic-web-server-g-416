@@ -10,6 +10,20 @@ const bcrypt       = require('bcrypt');
 const router       = new Router({ mergeParams: true});
 const router = new Router();
 
+
+function createMessage(){
+  let MessageId = 0
+  // return the class
+  return class {
+    constructor(message){
+      this.message = message
+      this.id = ++MessageId
+    }
+  }
+}
+
+router.use(bodyParser.json());
+
 router.get('/', (request, response) => {
    response.setHeader('Content-Type', 'text/plain; charset=utf-8');
   response.end('Hello, World!')
