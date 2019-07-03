@@ -1,9 +1,13 @@
 "use strict";
 
 const http         = require('http');
+const url = require('url');
 const finalhandler = require('finalhandler');
 const Router       = require('router');
-
+const querystring  = require('querystring');
+const bodyParser   = require('body-parser');
+const bcrypt       = require('bcrypt');
+const router       = new Router({ mergeParams: true});
 const router = new Router();
 
 router.get('/', (request, response) => {
