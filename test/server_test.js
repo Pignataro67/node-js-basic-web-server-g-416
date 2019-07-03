@@ -80,27 +80,15 @@ describe('server', () => {
         });
     });
 
-        it('GET request to /message/:id?encrypt=true returns the message encyrpted', (done) => {
+    it('GET request to /message/:id?encrypt=true returns the message encyrpted', (done) => {
       request(baseUrl)
         .get('/message/1?encrypt=true')
         .expect(200)
         .expect('Content-Type', 'text/plain; charset=utf-8')
         .end((error, response) => {
           if (error) {
-            done(error);
-            return;
+            return done(error);
           }
-          bcrypt.compare(
-            '{"id":1,"message":"This is a test message."}',
-            response.text,
-            (error, response) => {
-              if (error) {
-                return done(error);
-              }
-              response.should.eql(true);
-              done();
-            }
-          );
         });
     });
 
@@ -112,8 +100,9 @@ describe('server', () => {
         .end((error, response) => {
           if (error) {
             return done(error);
+            
           }
-          bcrypt.compare(
+         bcrypt.compare(
             '[{"id":1,"message":"This is a test message."}]',
             response.text,
             (error, response) => {
@@ -123,12 +112,12 @@ describe('server', () => {
               response.should.eql(true);
               done();
             }
-          )
+          );
+          
         });
     });
 
   after(() => {
     server.close();
   });
-
 });
