@@ -22,8 +22,8 @@ describe('server', () => {
       .expect('Content-Type', 'text/plain; charset=utf-8')
       .end((error, response) => {
         if (error) {
-          done(error);
-          return;
+         return done(error);
+         
         }
         response.text.should.equal("Hello, World!");
         done();
