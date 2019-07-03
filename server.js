@@ -3,7 +3,7 @@
 const http         = require('http');
 const url = require('url');
 const finalhandler = require('finalhandler');
-const Router       = require('router');
+// const Router       = require('router');
 const querystring  = require('querystring');
 const bodyParser   = require('body-parser');
 const bcrypt       = require('bcrypt');
