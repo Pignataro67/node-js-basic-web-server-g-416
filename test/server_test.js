@@ -84,8 +84,20 @@ describe('server', () => {
         .expect('Content-Type', 'text/plain; charset=utf-8')
         .end((error, response) => {
           if (error) {
-            return done(error);
+            done(error);
+            return;
           }
+          bcrypt.compare(
+            '{"id":1,"message":"This is a test message."}',
+            response.text,
+            (error, response) => {
+              if (error) {
+                return done(error);
+              }
+              response.should.eql(true);
+              done();
+            }
+          );
         });
     });
 
@@ -97,9 +109,8 @@ describe('server', () => {
         .end((error, response) => {
           if (error) {
             return done(error);
-            
           }
-         bcrypt.compare(
+          bcrypt.compare(
             '[{"id":1,"message":"This is a test message."}]',
             response.text,
             (error, response) => {
@@ -109,12 +120,12 @@ describe('server', () => {
               response.should.eql(true);
               done();
             }
-          );
-          
+          )
         });
     });
 
   after(() => {
     server.close();
   });
+
 });
