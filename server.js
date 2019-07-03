@@ -1,6 +1,7 @@
 "use strict";
 
-const http         = require('http');
+let messages = [];
+const http = require('http');
 const url = require('url');
 const finalhandler = require('finalhandler');
 const Router = require('router');
