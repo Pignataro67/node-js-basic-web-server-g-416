@@ -2,7 +2,7 @@
 
 let messages = [];
 const http = require('http');
-const url = require('url');
+
 const finalhandler = require('finalhandler');
 const Router = require('router');
 const bodyParser = require('body-parser');
