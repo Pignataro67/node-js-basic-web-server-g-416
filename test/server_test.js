@@ -8,14 +8,6 @@ const bcrypt = require('bcrypt');
 
 const server = require('../server');
 const baseUrl = 'http://localhost:3000';
-const salt = crypto.randomBytes(16).toString('base64');
-
-const decrypt = (encryptedTxt) => {
-  const decipher = crypto.createDecipher('aes-256-ctr', salt);
-  let decrypted = decipher.update(encryptedTxt, 'hex', 'utf8');
-  decrypted += decipher.final('utf8');
-  return decrypted;
-};
 
 describe('server', () => {
 
