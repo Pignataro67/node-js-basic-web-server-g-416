@@ -38,8 +38,7 @@ describe('server', () => {
         .expect('Content-Type', 'application/json; charset=utf-8')
         .end((error, response) => {
           if (error) {
-            done(error);
-            return;
+            return done(error);
           }
           let result = JSON.parse(response.text);
           result.should.be.a('number');
@@ -71,8 +70,8 @@ describe('server', () => {
         .expect('Content-Type', 'application/json; charset=utf-8')
         .end((error, response) => {
           if (error) {
-            done(error);
-            return;
+            return done(error);
+            
           }
           let result = JSON.parse(response.text);
           result.should.be.a('object');
